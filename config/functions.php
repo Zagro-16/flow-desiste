@@ -88,3 +88,15 @@ function normalizeWithdrawalState(?string $state): string
     $allowed = ['attivo', 'rinunciatario', 'desistente', 'completato'];
     return in_array($state, $allowed, true) ? $state : 'attivo';
 }
+
+function current_path(): string
+{
+    $uri = $_SERVER['REQUEST_URI'] ?? '';
+    $path = parse_url($uri, PHP_URL_PATH);
+    return is_string($path) ? $path : '';
+}
+
+function nav_is_active(string $path): string
+{
+    return current_path() === $path ? 'active' : '';
+}
