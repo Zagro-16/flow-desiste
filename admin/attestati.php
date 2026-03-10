@@ -28,6 +28,9 @@ require_once __DIR__ . '/../includes/topbar.php';
 <form action="/actions/attestato-genera.php" method="post" class="row g-3">
 <div class="col-md-8"><label class="form-label">Corsista / Corso</label><select class="form-select" name="enrollment_pair" required><?php foreach($enrolled as $e): ?><option value="<?= (int)$e['student_id'] ?>:<?= (int)$e['course_id'] ?>"><?= e($e['corso_titolo'].' - '.$e['cognome'].' '.$e['nome']) ?></option><?php endforeach; ?></select></div>
 <div class="col-md-4"><label class="form-label">Timbro/firma</label><select class="form-select" name="stamp_type"><option value="timbro_firma">Timbro con firma</option><option value="timbro">Timbro standard</option></select></div>
+<div class="col-md-3"><label class="form-label">Data emissione</label><input type="date" class="form-control" name="issue_date" value="<?= date('Y-m-d') ?>" required></div>
+<div class="col-md-9"><label class="form-label">Moduli (opzionale)</label><input class="form-control" name="modules" placeholder="Es. Sicurezza, Project Work, Laboratorio"></div>
+<div class="col-12"><label class="form-label">Competenze acquisite (opzionale)</label><textarea class="form-control" rows="2" name="skills" placeholder="Es. sviluppo web, teamwork, problem solving"></textarea></div>
 <div class="col-12"><button class="btn btn-primary">Genera attestato PDF</button></div>
 </form>
 </div></div>

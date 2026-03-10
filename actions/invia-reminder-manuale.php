@@ -52,16 +52,37 @@ try {
     ]);
 
     $logStmt = $pdo->prepare('INSERT INTO email_logs (destinatario_email, oggetto, corpo, tipo_reminder) VALUES (:email,:oggetto,:corpo,"manuale")');
+    $sent = 0;
+    $failed = 0;
     foreach ($recipients as $r) {
+        $email = trim((string)($r['email'] ?? ''));
+        if ($email === '' || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $failed++;
+            continue;
+        }
+
+        $headers = [
+            'MIME-Version: 1.0',
+            'Content-type: text/plain; charset=UTF-8',
+            'From: noreply@formaflow.local',
+        ];
+
+        $mailOk = @mail($email, $subject, $message, implode("\r\n", $headers));
+        if ($mailOk) {
+            $sent++;
+        } else {
+            $failed++;
+        }
+
         $logStmt->execute([
-            'email' => $r['email'] ?: 'no-email@local',
+            'email' => $email,
             'oggetto' => $subject,
             'corpo' => $message,
         ]);
     }
 
     $pdo->commit();
-    flash('success', 'Comunicazione registrata e invio loggato per ' . count($recipients) . ' destinatari.');
+    flash('success', 'Comunicazione registrata. Invii OK: ' . $sent . ' · non inviati: ' . $failed . '.');
 } catch (Throwable $e) {
     if ($pdo->inTransaction()) {
         $pdo->rollBack();
