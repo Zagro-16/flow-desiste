@@ -1,2 +1,36 @@
-body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
-.sidebar{min-height:calc(100vh - 56px)}
+:root {
+  --ff-primary: #0d6efd;
+  --ff-bg: #f5f7fb;
+  --ff-card: #ffffff;
+  --ff-text: #1f2937;
+}
+
+body {
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  background: var(--ff-bg);
+  color: var(--ff-text);
+}
+
+.sidebar {
+  min-height: calc(100vh - 56px);
+  background: linear-gradient(180deg, #1f2937 0%, #111827 100%);
+}
+
+.sidebar .nav-link {
+  border-radius: .4rem;
+  padding: .5rem .75rem;
+}
+
+.sidebar .nav-link:hover,
+.sidebar .nav-link.active {
+  background: rgba(255,255,255,.12);
+}
+
+.card {
+  border: 0;
+  border-radius: .9rem;
+}
+
+.table > :not(caption) > * > * {
+  padding: .75rem;
+}
