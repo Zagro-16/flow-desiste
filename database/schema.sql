@@ -321,3 +321,19 @@ CREATE TABLE settings (
     valore TEXT NULL,
     aggiornato_il DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
+
+
+CREATE TABLE communications (
+    id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    target_type ENUM('Docenti','Corsisti','Corso','Utente','Tutti') NOT NULL,
+    target_course_id BIGINT UNSIGNED NULL,
+    target_user_id BIGINT UNSIGNED NULL,
+    subject VARCHAR(255) NOT NULL,
+    message TEXT NOT NULL,
+    total_recipients INT NOT NULL DEFAULT 0,
+    created_by BIGINT UNSIGNED NOT NULL,
+    created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT fk_comm_course FOREIGN KEY (target_course_id) REFERENCES courses(id),
+    CONSTRAINT fk_comm_user FOREIGN KEY (target_user_id) REFERENCES users(id),
+    CONSTRAINT fk_comm_creator FOREIGN KEY (created_by) REFERENCES users(id)
+);

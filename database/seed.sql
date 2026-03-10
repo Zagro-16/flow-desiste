@@ -51,3 +51,7 @@ INSERT INTO settings (chiave, valore) VALUES
 ('ente_nome', 'Desiste Formazione'),
 ('ente_email', 'info@desisteformazione.it'),
 ('smtp_host', 'smtp.example.com');
+
+
+INSERT INTO communications (target_type, target_course_id, target_user_id, subject, message, total_recipients, created_by)
+VALUES ('Corsisti', 1, NULL, 'Benvenuto in FormaFlow', 'Benvenuti nel gestionale FormaFlow By Desiste.', 1, 1);
