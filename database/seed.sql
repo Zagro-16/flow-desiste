@@ -1,9 +1,9 @@
 USE formaflow;
 
 INSERT INTO users (nome, cognome, email, password_hash, role) VALUES
-('Admin', 'Demo', 'admin@formaflow.local', '$2y$10$20VwEjJLnKkIhON6Q5wQie8zwENvFY1f4J94f80zg.YkNTwTHh9Za', 'admin'),
-('Mario', 'Docente', 'docente@formaflow.local', '$2y$10$20VwEjJLnKkIhON6Q5wQie8zwENvFY1f4J94f80zg.YkNTwTHh9Za', 'docente'),
-('Luca', 'Corsista', 'corsista@formaflow.local', '$2y$10$20VwEjJLnKkIhON6Q5wQie8zwENvFY1f4J94f80zg.YkNTwTHh9Za', 'corsista');
+('Admin', 'Demo', 'admin@formaflow.local', '$2y$12$eMBbhnLmYxQBLOGRoiDWbeFM/MaUhr30mlinRgELpDm4svo3gjVmG', 'admin'),
+('Mario', 'Docente', 'docente@formaflow.local', '$2y$12$eMBbhnLmYxQBLOGRoiDWbeFM/MaUhr30mlinRgELpDm4svo3gjVmG', 'docente'),
+('Luca', 'Corsista', 'corsista@formaflow.local', '$2y$12$eMBbhnLmYxQBLOGRoiDWbeFM/MaUhr30mlinRgELpDm4svo3gjVmG', 'corsista');
 
 INSERT INTO teacher_profiles (user_id, codice_fiscale, telefono, ore_assegnate, ore_svolte)
 VALUES (2, 'RSSMRA80A01H501U', '+39000111222', 120, 24);
